@@ -1,17 +1,29 @@
 package com.example.designbookmyshowjava.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
-@Setter
+
 @Getter
-@Entity(name="shows")
-public class Show extends BaseModel {
+@Setter
+@Entity(name="shows")  //because Show is the keyword in sql so we made it as name='shows'
+public class Show extends BaseModel{
+
+    @ManyToOne
     private Movie movie;
-    private Date startDate;
-    private Theatre theatre;
+    private Date startTime;
+    private int duration;
+
+    @ManyToOne
     private Screen screen;
-    private List<ShowSeat>showSeats;
-    private List<ShowSeatType>showSeatTypes;
+
+    @OneToMany
+    private List<ShowSeat> showSeats;
+
+    @OneToMany
+    private List<ShowSeatType> showSeatTypes;
 }
+

@@ -1,12 +1,13 @@
 package com.example.designbookmyshowjava.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
 @Setter
 @Getter
-@Entity
+@Entity(name="users")
 public class User extends BaseModel{
  private String email;
  private String password;
@@ -14,5 +15,6 @@ public class User extends BaseModel{
  private String lastName;
  private String phone;
  private String userName;
+ @OneToMany
  private List<Booking>booking;
 }
